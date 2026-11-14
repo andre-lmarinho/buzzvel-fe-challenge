@@ -7,8 +7,14 @@
 			"!**/out",
 			"!**/node_modules",
 			"!**/*.md",
+			"!**/public",
 			"!**/next-env.d.ts"
 		]
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
 	},
 	"formatter": {
 		"enabled": true
