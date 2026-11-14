@@ -1,0 +1,30 @@
+{
+	"$schema": "https://biomejs.dev/schemas/latest/schema.json",
+	"files": {
+		"includes": [
+			"**",
+			"!**/.next",
+			"!**/out",
+			"!**/node_modules",
+			"!**/*.md",
+			"!**/next-env.d.ts"
+		]
+	},
+	"formatter": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"domains": {
+			"react": "recommended",
+			"next": "recommended"
+		}
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	}
+}
