@@ -1,1 +1,60 @@
 @import "tailwindcss";
+
+@theme {
+	--breakpoint-sm: 34rem;
+	--breakpoint-tablet: 54rem;
+	--breakpoint-wide: 70rem;
+
+	--spacing-section: clamp(5rem, 7.8125vw, 6.25rem);
+	--spacing-people: calc(var(--spacing-section) + 0.6875rem);
+	--spacing-layout: clamp(2.5rem, 4.6875vw, 3.75rem);
+	--spacing-contact: clamp(2.5rem, calc(23.4375vw - 12.5rem), 6.25rem);
+	--spacing-hero-inset: clamp(0rem, calc((78rem - 100vw) / 2), 1.5rem);
+
+	--font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+	--font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+	--color-ink: #171b2c;
+	--color-muted: #656770;
+	--color-subtle: #6d7384;
+	--color-blue: #3157f6;
+	--color-blue-soft: #e2e8ff;
+	--color-orange: #ff704d;
+	--color-orange-soft: #ffcb9f;
+	--color-yellow: #ffee7e;
+	--color-yellow-soft: #fff1c2;
+	--color-cream: #f9f8f3;
+	--color-line: #dbdfeb;
+	--color-white-2: #e7e7ec;
+	--color-white-3: #9e9faa;
+}
+
+html {
+	overflow-x: clip;
+	scroll-behavior: smooth;
+}
+
+body {
+	overflow-x: clip;
+	background-color: #ffffff;
+	color: var(--color-ink);
+	font-family: var(--font-body);
+}
+
+/* White shadow separates the focus ring from any background. */
+:focus-visible {
+	outline: 2px solid var(--color-blue);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 4px var(--color-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	::before,
+	::after {
+		animation-duration: 0.01ms;
+		animation-iteration-count: 1;
+		transition-duration: 0.01ms;
+		scroll-behavior: auto;
+	}
+}
