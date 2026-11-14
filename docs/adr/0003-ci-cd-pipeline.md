@@ -9,10 +9,11 @@ The project is a single page, so a full pipeline is in theory overkill — but i
 
 ## Decision
 
-- **CI on GitHub Actions** (`.github/workflows/ci.yml`), three parallel jobs sharing one setup (Node from `.nvmrc`, pnpm version from the `packageManager` field, `--frozen-lockfile`, pnpm store cache):
+- **CI on GitHub Actions** (`.github/workflows/ci.yml`), parallel jobs sharing one setup (Node from `.nvmrc`, pnpm version from the `packageManager` field, `--frozen-lockfile`, pnpm store cache):
   - `lint` — `biome check .`
   - `typecheck` — `tsc --noEmit`
   - `build` — `next build` (telemetry disabled)
+  - `a11y` — axe-core scan of the production build (`pnpm a11y`, `scripts/a11y.mjs`)
 - **CD delegated to Vercel's Git integration**: every push and PR gets its own build and deploy/preview from the same lockfile and build command. No deploy job and no Vercel token in Actions — one pipeline owns deploys instead of two.
 
 ## Alternatives
@@ -24,7 +25,8 @@ The project is a single page, so a full pipeline is in theory overkill — but i
 
 ## Consequences
 
-- Three parallel installs per run; the pnpm cache keeps them cheap.
+- Four parallel installs per run; the pnpm cache keeps them cheap, and the `a11y` job additionally downloads Chromium (~1 min).
+- A clean scan covers only the exercised states and the rules axe implements — not a WCAG conformance claim; manual checks and screen-reader testing ([accessibility](../accessibility.md)) stay as complementary evidence. New interactive states must be added to `scripts/a11y.mjs` or they are never scanned.
 - Actions checks and Vercel builds run independently — a green check and a green Vercel build are different signals, both watched.
-- The three checks are the intended merge gates; enabling branch protection on `main` to require them is a follow-up configuration on GitHub, not something the workflow can enforce.
-- A Husky pre-commit hook runs `biome check --write --staged --no-errors-on-unmatched`, fixing mechanical issues on staged files before they reach CI — Actions compute is spent on the real gates, not on catching formatting errors. The last flag lets commits touching only docs or assets pass. The hook is a subset of the CI gate: both block on errors and pass on warnings, so what a commit accepts, CI accepts too. Biome's native `--staged` flag does the work of lint-staged without the extra dependency.
+- The checks are the intended merge gates; enabling branch protection on `main` to require them is a follow-up configuration on GitHub, not something the workflow can enforce.
+- A Husky pre-commit hook runs `biome check --write --staged --no-errors-on-unmatched`, fixing mechanical issues on staged files before they reach CI — Actions compute is spent on the real gates, not on catching formatting errors.
