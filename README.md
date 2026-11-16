@@ -47,7 +47,7 @@ GitHub Actions runs four parallel checks on every push and PR — lint, typechec
 - [ADR 0005 — Serve fonts locally from versioned files](docs/adr/0005-serve-fonts-locally-from-versioned-files.md).
 - [Design divergences](docs/design-divergences.md) — intentional corrections and responsive decisions that differ from the Figma frames.
 - [Accessibility](docs/accessibility.md) — what is in place, how it was checked, and what was not done.
-- [SEO](docs/seo.md) — deliberately minimal; what ships, what is intentionally absent and when to revisit.
+- [SEO](docs/seo.md) — technical basics shipped (canonical, sitemap, OG image, llms.txt); content strategy deliberately out.
 
 ## Logs/Audits
 

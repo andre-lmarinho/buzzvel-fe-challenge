@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const inter = localFont({
@@ -22,14 +23,19 @@ const jakarta = localFont({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL(siteUrl),
 	title: "Luma — Practical learning for curious people",
 	description:
 		"Practical courses taught by people who do the work every day. Learn design, technology, business and more — one focused lesson at a time.",
+	alternates: {
+		canonical: "./",
+	},
 	openGraph: {
 		title: "Luma — Practical learning for curious people",
 		description:
 			"Short, practical courses designed around skills you can put to work immediately.",
 		type: "website",
+		url: "./",
 	},
 };
 
