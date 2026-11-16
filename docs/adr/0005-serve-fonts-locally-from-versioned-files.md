@@ -13,10 +13,10 @@ The design file uses Inter for body text and Plus Jakarta Sans for display. Pixe
 
 Serve the `.woff2` files committed in `src/fonts/`:
 
-- `Inter-{Regular,SemiBold,Bold}.woff2` — Latin subsets of the v3.19 hinted web build matching the Figma metrics.
+- `Inter-Variable.woff2` — Latin subset of Inter v3.19, restricted to weights 400–700.
 - `Jakarta-Variable.woff2` — Plus Jakarta Sans variable (wght 200–800, latin), the same file Google was serving at the time, frozen before it can change.
 
-Inter uses CSS `@font-face`; Jakarta uses `next/font/local`.
+Both fonts use `next/font/local`.
 
 ## Consequences
 

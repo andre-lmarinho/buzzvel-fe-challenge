@@ -1,23 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-	font-family: "Inter";
-	src: url("../fonts/Inter-Regular.woff2") format("woff2");
-	font-weight: 400;
-	font-display: swap;
-}
-@font-face {
-	font-family: "Inter";
-	src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
-	font-weight: 600;
-	font-display: swap;
-}
-@font-face {
-	font-family: "Inter";
-	src: url("../fonts/Inter-Bold.woff2") format("woff2");
-	font-weight: 700;
-	font-display: swap;
-}
 @theme {
 	--breakpoint-sm: 34rem;
 	--breakpoint-tablet: 54rem;
@@ -30,7 +12,7 @@
 	--spacing-hero-inset: clamp(0rem, calc((78rem - 100vw) / 2), 1.5rem);
 
 	--font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-	--font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+	--font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
 	--color-ink: #171b2c;
 	--color-muted: #656770;

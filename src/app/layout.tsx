@@ -5,6 +5,14 @@ import { Header } from "@/components/header";
 import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
+const inter = localFont({
+	src: "../fonts/Inter-Variable.woff2",
+	weight: "400 700",
+	variable: "--font-inter",
+	display: "swap",
+	preload: false,
+});
+
 const jakarta = localFont({
 	src: "../fonts/Jakarta-Variable.woff2",
 	weight: "600 800",
@@ -38,7 +46,7 @@ export default function RootLayout({
 	children,
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
-		<html lang="en" className={jakarta.variable}>
+		<html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
 			<body>
 				<a
 					href="#main-content"

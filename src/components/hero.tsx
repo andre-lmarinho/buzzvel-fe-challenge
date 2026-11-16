@@ -64,8 +64,8 @@ export function Hero() {
 							alt="Person focused on learning at their laptop"
 							width={900}
 							height={1100}
-							priority
 							fetchPriority="high"
+							loading="eager"
 							sizes="(min-width: 560px) 500px, calc(100vw - 56px)"
 							className="relative z-10 aspect-346/380 w-full max-h-130 rounded-2xl object-cover object-center tablet:aspect-500/520 tablet:rounded-3xl"
 						/>
