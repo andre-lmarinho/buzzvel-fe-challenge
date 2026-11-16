@@ -1,4 +1,4 @@
-import { SectionContainer } from "./ui/SectionContainer";
+import { PageSection } from "./ui/PageSection";
 import { Eyebrow, H2, H3 } from "./ui/Typograph";
 
 const STEPS = [
@@ -27,32 +27,30 @@ const STEPS = [
 
 export function HowItWorks() {
 	return (
-		<section id="how-it-works" className="bg-cream">
-			<SectionContainer className="py-15 md:min-h-157 md:py-section">
-				<Eyebrow className="text-center text-blue">How Luma works</Eyebrow>
-				<H2 className="mt-4 text-center">Less browsing. More learning.</H2>
+		<PageSection id="how-it-works" className="bg-cream">
+			<Eyebrow className="text-center text-blue">How Luma works</Eyebrow>
+			<H2 className="mt-4 text-center">Less browsing. More learning.</H2>
 
-				<ol className="relative mt-10 grid md:mt-20 md:grid-cols-3 md:gap-8 md:py-7 lg:gap-20">
-					{STEPS.map((item) => (
-						<li
-							key={item.step}
-							className="relative pb-20 after:absolute after:bottom-0 after:left-7 after:h-12.5 after:w-px after:bg-line before:absolute before:top-7 before:left-7 before:hidden before:h-px before:w-[calc(100%+2rem)] before:bg-line last:pb-0 last:after:hidden last:before:hidden md:pb-0 md:after:hidden md:before:block lg:before:w-[calc(100%+5rem)]"
-						>
-							<div
-								aria-hidden="true"
-								className={`relative z-10 size-14 ${item.iconClass}`}
-							/>
-							<p className="mt-6 text-xs font-semibold tracking-[0.12em] text-subtle uppercase">
-								Step {item.step}
-							</p>
-							<H3 className="mt-2">{item.title}</H3>
-							<p className="mt-3 text-sm leading-6 text-muted md:text-base md:leading-7 md:max-w-80">
-								{item.text}
-							</p>
-						</li>
-					))}
-				</ol>
-			</SectionContainer>
-		</section>
+			<ol className="relative mt-10 grid md:mt-20 md:grid-cols-3 md:gap-8 md:py-7 lg:gap-20">
+				{STEPS.map((item) => (
+					<li
+						key={item.step}
+						className="relative pb-20 after:absolute after:bottom-0 after:left-7 after:h-12.5 after:w-px after:bg-line before:absolute before:top-7 before:left-7 before:hidden before:h-px before:w-[calc(100%+2rem)] before:bg-line last:pb-0 last:after:hidden last:before:hidden md:pb-0 md:after:hidden md:before:block lg:before:w-[calc(100%+5rem)]"
+					>
+						<div
+							aria-hidden="true"
+							className={`relative z-10 size-14 ${item.iconClass}`}
+						/>
+						<p className="mt-6 text-xs font-semibold tracking-[0.12em] text-subtle uppercase">
+							Step {item.step}
+						</p>
+						<H3 className="mt-2">{item.title}</H3>
+						<p className="mt-3 text-sm leading-6 text-muted md:text-base md:leading-7 md:max-w-80">
+							{item.text}
+						</p>
+					</li>
+				))}
+			</ol>
+		</PageSection>
 	);
 }
