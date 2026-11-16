@@ -55,7 +55,6 @@ export function FinalCta() {
 						alt=""
 						width={icon.size}
 						height={icon.size}
-						loading="eager"
 						className="absolute opacity-90"
 						style={{ ...icon.style, width: `${icon.size / 12.8}%` }}
 					/>

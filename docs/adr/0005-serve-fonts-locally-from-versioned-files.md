@@ -11,16 +11,16 @@ The design file uses Inter for body text and Plus Jakarta Sans for display. Pixe
 
 ## Decision
 
-Use `next/font/local` with the `.woff2` files committed in `src/fonts/`:
+Serve the `.woff2` files committed in `src/fonts/`:
 
-- `Inter-{Regular,SemiBold,Bold}.woff2` — v3.19 (hinted web build), the build matching the Figma metrics.
+- `Inter-{Regular,SemiBold,Bold}.woff2` — Latin subsets of the v3.19 hinted web build matching the Figma metrics.
 - `Jakarta-Variable.woff2` — Plus Jakarta Sans variable (wght 200–800, latin), the same file Google was serving at the time, frozen before it can change.
 
-`next/font/google` is no longer used.
+Inter uses CSS `@font-face`; Jakarta uses `next/font/local`.
 
 ## Consequences
 
 - Font metrics are frozen: the pixel parity achieved against the Figma frames cannot regress from a third-party update.
 - Updating a font is a deliberate file replacement in `src/fonts/` (plus the weight declaration in `layout.tsx`), ideally re-validated against the Figma frames with the pixel-diff script.
-- Four committed files (~550 KB total) are part of the repository history; at runtime both approaches are identical (self-hosted woff2 with preload), so loading performance is unchanged.
+- Latin subsets reduce font transfer; content outside their character coverage requires a font update.
 - If a future Inter release matches the Figma build again, the files can be swapped back after re-validation.

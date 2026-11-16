@@ -110,8 +110,6 @@ export function People() {
 											}
 											fill
 											sizes="(min-width: 768px) 140px, 94px"
-											loading="eager"
-											unoptimized
 											className="object-cover"
 										/>
 									</div>

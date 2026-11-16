@@ -36,7 +36,6 @@ export function Hero() {
 										width={80}
 										height={80}
 										sizes="40px"
-										loading="eager"
 										className="size-full rounded-full object-cover"
 									/>
 								</span>
@@ -66,6 +65,8 @@ export function Hero() {
 							width={900}
 							height={1100}
 							priority
+							fetchPriority="high"
+							sizes="(min-width: 560px) 500px, calc(100vw - 56px)"
 							className="relative z-10 aspect-346/380 w-full max-h-130 rounded-2xl object-cover object-center tablet:aspect-500/520 tablet:rounded-3xl"
 						/>
 						<div className="absolute top-[1.58%] left-[-2.31%] z-20 flex h-14 items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg md:top-[3.08%] md:left-[-4.4%]">
@@ -85,7 +86,6 @@ export function Hero() {
 										alt=""
 										width={14}
 										height={14}
-										loading="eager"
 										className="size-3.5"
 									/>
 								))}

@@ -15,7 +15,7 @@ export function FeaturedCourse() {
 						alt="Product design course — student working on interface designs"
 						width={700}
 						height={500}
-						loading="eager"
+						sizes="(min-width: 768px) 538px, calc(100vw - 48px)"
 						className="aspect-362/280 w-full max-h-104 rounded-2xl object-cover tablet:aspect-538/408 tablet:max-h-102"
 					/>
 					<span className="absolute -top-3 -left-3 inline-flex items-center rounded-lg bg-yellow px-3 py-1.5 text-xs font-semibold tracking-[0.12em] text-ink uppercase">
@@ -61,7 +61,6 @@ export function FeaturedCourse() {
 								alt=""
 								width={20}
 								height={20}
-								loading="eager"
 								className="size-5 brightness-0 invert transition-transform group-hover:translate-x-1"
 							/>
 						</Button>

@@ -57,7 +57,6 @@ export function Categories() {
 										alt=""
 										width={20}
 										height={20}
-										loading="eager"
 										className="size-5 transition-transform group-hover:translate-x-1"
 									/>
 								</span>

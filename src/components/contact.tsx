@@ -78,7 +78,6 @@ export function Contact() {
 									alt=""
 									width={24}
 									height={24}
-									loading="eager"
 									className="size-6"
 								/>
 							</span>
@@ -99,7 +98,6 @@ export function Contact() {
 									alt=""
 									width={24}
 									height={24}
-									loading="eager"
 									className="size-5"
 								/>
 							</span>

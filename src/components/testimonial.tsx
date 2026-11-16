@@ -13,13 +13,7 @@ export function Testimonial() {
 		<section className="bg-white">
 			<SectionContainer className="grid min-h-131 content-start gap-15 py-15 md:min-h-0 md:grid-cols-3 md:gap-8 md:py-section lg:flex lg:gap-16">
 				<div className="md:col-span-2 md:flex md:flex-col md:justify-center lg:basis-3/5">
-					<Image
-						src="/assets/icon-quote.svg"
-						alt=""
-						width={24}
-						height={22}
-						loading="eager"
-					/>
+					<Image src="/assets/icon-quote.svg" alt="" width={24} height={22} />
 					<blockquote className="mt-4 font-display text-[clamp(1.25rem,2.35vw,1.875rem)] leading-[clamp(2rem,3.45vw,2.75rem)] font-semibold md:max-w-150 md:tracking-tight">
 						The lessons are short enough to fit into my week, but detailed
 						enough that I actually leave with something I can use.
@@ -30,7 +24,6 @@ export function Testimonial() {
 							alt="Alex Morgan"
 							width={48}
 							height={48}
-							loading="eager"
 							className="size-12 rounded-full object-cover"
 						/>
 						<figcaption>
