@@ -12,7 +12,7 @@ export const buttonVariants = cva(
 				solid: "bg-blue text-white font-bold hover:opacity-90",
 				ghost: "text-ink font-bold",
 				outline:
-					"border border-line bg-white text-ink font-bold hover:bg-cream",
+					"border border-line bg-white text-ink font-bold hover:bg-white/60",
 				link: "text-muted hover:text-blue",
 				yellow: "bg-yellow text-ink font-bold hover:opacity-90",
 				"link-inverse": "text-white font-bold hover:opacity-90",

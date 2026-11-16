@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AvatarStack } from "./ui/AvatarStack";
 import { Button } from "./ui/Button";
 import { SectionContainer } from "./ui/SectionContainer";
 
@@ -62,23 +63,7 @@ export function FinalCta() {
 			</div>
 
 			<SectionContainer className="relative flex min-h-117.25 flex-col items-center justify-center py-15 text-center md:py-section">
-				<div className="flex -space-x-2">
-					{[1, 2, 3, 4].map((n) => (
-						<span
-							key={n}
-							className="relative size-10 shrink-0 rounded-full after:absolute after:inset-0 after:rounded-full after:border-2 after:border-yellow"
-						>
-							<Image
-								src={`/assets/photo-avatar-${n}.jpg`}
-								alt=""
-								width={80}
-								height={80}
-								sizes="40px"
-								className="size-full rounded-full object-cover"
-							/>
-						</span>
-					))}
-				</div>
+				<AvatarStack count={4} size="md" ring="yellow" />
 				<h2 className="mt-8 font-display text-[clamp(2.25rem,4.375vw,3.5rem)] leading-[clamp(2.5rem,5vw,4rem)] font-extrabold tracking-tight">
 					What will you learn next?
 				</h2>

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { Eyebrow, H1, H2, H3, P } from "./Typograph";
+import { Eyebrow, H1, H2, H3 } from "./Typograph";
 
 const meta = {
 	title: "UI/Typograph",
@@ -20,10 +20,20 @@ export const CardH3: Story = { render: () => <H3>Frontend Fundamentals</H3> };
 export const Body: Story = {
 	render: () => (
 		<div className="w-96">
-			<P>
+			<p className="text-base leading-6.5 md:text-lg md:leading-7">
 				Morbi sit egestas dignissim pharetra, sed amet. Tempus justo senectus
 				risus ac vel, velit, nunc.
-			</P>
+			</p>
+		</div>
+	),
+};
+export const BodySmall: Story = {
+	render: () => (
+		<div className="w-96">
+			<p className="text-sm leading-6">
+				Morbi sit egestas dignissim pharetra, sed amet. Tempus justo senectus
+				risus ac vel, velit, nunc.
+			</p>
 		</div>
 	),
 };

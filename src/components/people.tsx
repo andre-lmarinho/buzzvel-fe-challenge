@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Button } from "./ui/Button";
 import { SectionContainer } from "./ui/SectionContainer";
 import { Eyebrow, H2 } from "./ui/Typograph";
 
@@ -75,18 +75,15 @@ export function People() {
 				<div>
 					<Eyebrow className="text-blue">The people</Eyebrow>
 					<H2 className="mt-2">Meet international students &amp; teachers</H2>
-					<p className="mt-6 max-w-132.5 text-base leading-6.5 text-ink md:mt-8 md:text-lg md:leading-7 md:text-muted">
+					<p className="text-base leading-6.5 md:text-lg md:leading-7 my-6 max-w-132.5 text-ink md:my-8 md:text-muted">
 						Morbi sit egestas dignissim pharetra, sed amet. Tempus justo
 						senectus risus ac vel, velit, nunc. Eget commodo eget in aliquam
 						facilisi facilisi nec magna hendrerit. Placerat ipsum sit tellus
 						urna, faucibus aenean lorem faucibus integer.
 					</p>
-					<Link
-						href="#contact"
-						className="mt-6 inline-flex h-13.5 items-center justify-center rounded-lg border border-line bg-white px-7 text-sm font-bold text-ink hover:bg-white/60 md:mt-8 md:px-5 xl:px-7"
-					>
+					<Button href="#contact" variant="outline" size="xl">
 						Explore teachers and students
-					</Link>
+					</Button>
 				</div>
 
 				<div className="relative mx-auto aspect-square w-[calc(100%-2rem)] max-w-125 before:absolute before:inset-0 before:rounded-full before:bg-blue-soft md:w-full">

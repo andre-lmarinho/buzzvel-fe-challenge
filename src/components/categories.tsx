@@ -1,6 +1,7 @@
 import Image from "next/image";
+import { Badge } from "./ui/Badge";
 import { SectionContainer } from "./ui/SectionContainer";
-import { Eyebrow, H2, H3, P } from "./ui/Typograph";
+import { Eyebrow, H2, H3 } from "./ui/Typograph";
 
 const CATEGORIES = [
 	{
@@ -31,10 +32,10 @@ export function Categories() {
 			<SectionContainer className="py-15 sm:py-20 md:py-section">
 				<Eyebrow className="text-blue">Find your next skill</Eyebrow>
 				<H2 className="mt-4 max-w-140">Learn something worth knowing.</H2>
-				<P className="mt-4 max-w-140 text-muted">
+				<p className="text-base leading-6.5 md:text-lg md:leading-7 mt-4 max-w-140 text-muted">
 					Short, practical courses designed around skills you can put to work
 					immediately.
-				</P>
+				</p>
 
 				<ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:mt-10 wide:grid-cols-4 wide:gap-5">
 					{CATEGORIES.map((category) => (
@@ -43,11 +44,11 @@ export function Categories() {
 								href="#featured-course"
 								className="group flex h-56.75 flex-col rounded-2xl border border-line bg-white p-6 hover:border-blue sm:h-full sm:min-h-56.75 wide:min-h-66 wide:p-7 xl:h-66"
 							>
-								<span className="mt-1 inline-flex h-6 self-start items-center rounded-md bg-blue-soft px-2 font-display text-xs font-bold text-blue">
+								<Badge variant="soft" className="mt-1 self-start">
 									{category.number}
-								</span>
+								</Badge>
 								<H3 className="mt-5">{category.title}</H3>
-								<p className="mt-3 text-sm leading-6 text-muted">
+								<p className="text-sm leading-6 mt-3 text-muted">
 									{category.text}
 								</p>
 								<span className="mt-auto flex items-center gap-2 pt-6 text-sm font-bold text-ink">

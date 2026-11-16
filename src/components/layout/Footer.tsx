@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Logo } from "./ui/Logo";
+import { Logo } from "../ui/Logo";
 
 const COLUMNS = [
 	{
@@ -29,7 +29,7 @@ export function Footer() {
 						>
 							<Logo className="text-white" />
 						</Link>
-						<p className="mt-1 text-sm leading-6 text-white-3 md:max-w-50">
+						<p className="text-sm leading-6 mt-1 text-white-3 md:max-w-50">
 							Practical learning for curious people.
 						</p>
 					</div>

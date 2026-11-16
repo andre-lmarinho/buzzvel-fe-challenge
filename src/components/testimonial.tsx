@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { SectionContainer } from "./ui/SectionContainer";
-import { P } from "./ui/Typograph";
 
 const STATS = [
 	{ value: "24K+", label: "active learners" },
@@ -27,7 +26,9 @@ export function Testimonial() {
 							className="size-12 rounded-full object-cover"
 						/>
 						<figcaption>
-							<P className="text-ink font-bold">Alex Morgan</P>
+							<p className="text-base leading-6.5 md:text-lg md:leading-7 text-ink font-bold">
+								Alex Morgan
+							</p>
 							<p className="text-sm leading-6 text-muted">Product Manager</p>
 						</figcaption>
 					</figure>

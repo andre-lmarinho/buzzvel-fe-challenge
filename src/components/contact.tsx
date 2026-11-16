@@ -13,7 +13,7 @@ function ContactForm() {
 	return (
 		<div className="rounded-2xl border border-line bg-white px-4.75 py-5.75 shadow-[0_20px_50px_-20px_rgba(23,27,44,0.12)] md:p-9.75 lg:min-w-0 lg:flex-1">
 			<H3 className="leading-8">Contact us</H3>
-			<p className="mt-2 text-sm leading-6 text-muted">
+			<p className="text-sm leading-6 mt-2 text-muted">
 				Fill out the fields and we will get in touch.
 			</p>
 			<form
@@ -65,7 +65,7 @@ export function Contact() {
 				<div className="md:self-center lg:basis-3/7 lg:shrink-0">
 					<Eyebrow className="text-blue">Contact</Eyebrow>
 					<H2 className="mt-4">Get in touch</H2>
-					<p className="mt-4 max-w-120 text-sm leading-6 text-muted md:text-lg md:leading-7">
+					<p className="text-sm leading-6 mt-4 max-w-120 text-muted md:text-lg md:leading-7">
 						Have a question? We’re here to help. Whether you’re looking for the
 						right course, learning with your team or interested in teaching with
 						Luma, we’d love to hear from you.

@@ -1,7 +1,9 @@
 import Image from "next/image";
+import { AvatarStack } from "./ui/AvatarStack";
+import { Badge } from "./ui/Badge";
 import { Button } from "./ui/Button";
 import { SectionContainer } from "./ui/SectionContainer";
-import { Eyebrow, H1, P } from "./ui/Typograph";
+import { Eyebrow, H1 } from "./ui/Typograph";
 
 export function Hero() {
 	return (
@@ -10,12 +12,12 @@ export function Hero() {
 				<div className="order-2 mx-auto flex w-full min-w-0 max-w-129 flex-col items-start tablet:order-1 tablet:mx-0 tablet:max-w-140 tablet:flex-1">
 					<Eyebrow className="text-blue">Learn at your own pace</Eyebrow>
 					<H1 className="mt-4">Build skills that actually move you forward.</H1>
-					<P className="mt-6 max-w-120 text-muted">
+					<p className="text-base leading-6.5 md:text-lg md:leading-7 mt-6 max-w-120 text-muted">
 						Practical courses taught by people who do the work every day. Learn
 						design, technology, business and more — one focused lesson at a
 						time.
-					</P>
-					<div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+					</p>
+					<div className="my-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
 						<Button href="#categories" variant="solid" size="xl">
 							Explore courses
 						</Button>
@@ -23,29 +25,7 @@ export function Hero() {
 							See how it works
 						</Button>
 					</div>
-					<div className="mt-7.5 flex items-center gap-3 self-center sm:self-auto lg:mt-8">
-						<div className="flex -space-x-2">
-							{[1, 2, 3].map((n) => (
-								<span
-									key={n}
-									className="relative size-8 shrink-0 rounded-full ring-2 ring-cream after:absolute after:inset-0 after:rounded-full after:border-2 after:border-cream"
-								>
-									<Image
-										src={`/assets/photo-avatar-${n}.jpg`}
-										alt=""
-										width={80}
-										height={80}
-										sizes="40px"
-										className="size-full rounded-full object-cover"
-									/>
-								</span>
-							))}
-						</div>
-						<p className="text-sm text-muted">
-							<strong className="font-bold text-ink">Trusted by 24,000+</strong>{" "}
-							learners
-						</p>
-					</div>
+					<AvatarStack count={3} caption className="self-center sm:self-auto" />
 				</div>
 
 				<div className="order-1 mx-auto w-full min-w-0 max-w-129 px-2 tablet:order-2 tablet:mx-0 tablet:max-w-125 tablet:flex-1 tablet:pr-hero-inset tablet:pl-0">
@@ -70,9 +50,7 @@ export function Hero() {
 							className="relative z-10 aspect-346/380 w-full max-h-130 rounded-2xl object-cover object-center tablet:aspect-500/520 tablet:rounded-3xl"
 						/>
 						<div className="absolute top-[1.58%] left-[-2.31%] z-20 flex h-14 items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg md:top-[3.08%] md:left-[-4.4%]">
-							<span className="inline-flex items-center rounded-md bg-blue-soft px-1 text-sm leading-6 font-bold text-blue">
-								120+
-							</span>
+							<Badge variant="pill">120+</Badge>
 							<span className="text-sm whitespace-nowrap">
 								expert-led courses
 							</span>

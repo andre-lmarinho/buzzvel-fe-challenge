@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Badge } from "./ui/Badge";
 import { Button } from "./ui/Button";
 import { SectionContainer } from "./ui/SectionContainer";
 import { Eyebrow, H2 } from "./ui/Typograph";
@@ -18,9 +19,9 @@ export function FeaturedCourse() {
 						sizes="(min-width: 768px) 538px, calc(100vw - 48px)"
 						className="aspect-362/280 w-full max-h-104 rounded-2xl object-cover tablet:aspect-538/408 tablet:max-h-102"
 					/>
-					<span className="absolute -top-3 -left-3 inline-flex items-center rounded-lg bg-yellow px-3 py-1.5 text-xs font-semibold tracking-[0.12em] text-ink uppercase">
+					<Badge variant="label" className="absolute -top-3 -left-3">
 						Featured course
-					</span>
+					</Badge>
 				</div>
 
 				<div className="mx-auto w-full max-w-135 tablet:max-w-none">
@@ -28,21 +29,20 @@ export function FeaturedCourse() {
 					<H2 className="mt-4 text-white">
 						Designing products people understand.
 					</H2>
-					<p className="mt-5 text-sm leading-6 text-white md:text-base md:leading-7">
+					<p className="text-sm leading-6 mt-5 text-white md:text-base md:leading-7">
 						Learn how to turn complex workflows into simple, intentional product
 						experiences through research, structure and thoughtful interaction
 						design.
 					</p>
-					<p className="mt-6 text-sm leading-6 text-white md:text-base md:leading-7">
+					<p className="text-sm leading-6 mt-6 text-white md:text-base md:leading-7">
 						with Maya Chen · Senior Product Designer
 					</p>
 					<ul className="mt-6 flex flex-wrap gap-3">
 						{FACTS.map((fact) => (
-							<li
-								key={fact}
-								className="inline-flex items-center rounded-lg border border-line px-3.5 py-1.5 text-sm leading-6 text-white"
-							>
-								{fact}
+							<li key={fact}>
+								<Badge variant="outline" className="text-white">
+									{fact}
+								</Badge>
 							</li>
 						))}
 					</ul>
@@ -53,7 +53,8 @@ export function FeaturedCourse() {
 						<Button
 							href="#categories"
 							variant="link-inverse"
-							className="group h-12.5 gap-2 px-4 md:h-13"
+							size="xl"
+							className="group gap-2"
 						>
 							Browse all courses
 							<Image
