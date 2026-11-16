@@ -1,0 +1,19 @@
+/* next/font doesn't run in Storybook, so the --font-* variables it defines on
+   <html> are missing. Declare the same local files and variable names here so
+   stories render the real typography. */
+@font-face {
+	font-family: "Inter";
+	src: url("../src/fonts/Inter-Variable.woff2") format("woff2");
+	font-weight: 400 700;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Plus Jakarta Sans";
+	src: url("../src/fonts/Jakarta-Variable.woff2") format("woff2");
+	font-weight: 200 800;
+	font-display: swap;
+}
+:root {
+	--font-inter: "Inter";
+	--font-jakarta: "Plus Jakarta Sans";
+}
