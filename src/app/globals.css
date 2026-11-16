@@ -29,6 +29,12 @@
 	--color-white-3: #9e9faa;
 }
 
+@utility ornament {
+	pointer-events: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
 @utility page-gutters {
 	padding-inline: 1.25rem;
 	@media (min-width: 34rem) {

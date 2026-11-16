@@ -68,7 +68,7 @@ export function Header() {
 					aria-label={open ? "Close menu" : "Open menu"}
 					onClick={() => setOpen((v) => !v)}
 				>
-					<span aria-hidden="true" className="menu-icon" />
+					<span aria-hidden="true" className="menu-icon ornament" />
 				</button>
 			</div>
 
@@ -85,7 +85,7 @@ export function Header() {
 			>
 				<div
 					aria-hidden="true"
-					className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+					className="ornament absolute inset-0 -z-10 overflow-hidden"
 				>
 					<div className="absolute -right-20 -bottom-16 size-56 rounded-full bg-blue-soft" />
 				</div>

@@ -57,7 +57,7 @@ export function Categories() {
 									alt=""
 									width={20}
 									height={20}
-									className="size-5 transition-transform group-hover:translate-x-1"
+									className="ornament size-5 transition-transform group-hover:translate-x-1"
 								/>
 							</span>
 						</a>

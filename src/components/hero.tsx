@@ -31,11 +31,11 @@ export function Hero() {
 					{/* Percentages of the image box, measured from the Figma frames, so the ornaments scale with the image. */}
 					<div
 						aria-hidden="true"
-						className="absolute top-[6.32%] right-[-5.2%] h-[90%] w-[19.2%] rounded-2xl bg-orange-soft md:top-[4.62%] md:right-[-7.8%]"
+						className="ornament absolute top-[6.32%] right-[-5.2%] h-[90%] w-[19.2%] rounded-2xl bg-orange-soft md:top-[4.62%] md:right-[-7.8%]"
 					/>
 					<div
 						aria-hidden="true"
-						className="absolute bottom-[3.16%] left-[-5.2%] aspect-square w-[18.5%] rounded-full bg-blue-soft md:bottom-[2.12%] md:left-[-8.96%] md:w-[21.2%]"
+						className="ornament absolute bottom-[3.16%] left-[-5.2%] aspect-square w-[18.5%] rounded-full bg-blue-soft md:bottom-[2.12%] md:left-[-8.96%] md:w-[21.2%]"
 					/>
 					<Image
 						src="/assets/photo-hero.png"
@@ -54,7 +54,7 @@ export function Hero() {
 						</span>
 					</div>
 					<div className="absolute right-[-5.49%] bottom-[9.47%] z-20 flex h-12 items-center gap-2 rounded-xl bg-white px-4 shadow-lg md:right-[-11.44%] md:bottom-[6.83%]">
-						<span className="flex gap-0.5" aria-hidden="true">
+						<span className="ornament flex gap-0.5" aria-hidden="true">
 							{[1, 2, 3, 4, 5].map((star) => (
 								<Image
 									key={star}

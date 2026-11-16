@@ -80,7 +80,7 @@ export function Contact() {
 								alt=""
 								width={24}
 								height={24}
-								className="size-6"
+								className="ornament size-6"
 							/>
 						</span>
 						<div className="flex min-w-0 flex-col gap-0.5 md:gap-1">
@@ -100,7 +100,7 @@ export function Contact() {
 								alt=""
 								width={24}
 								height={24}
-								className="size-5"
+								className="ornament size-5"
 							/>
 						</span>
 						<div className="flex min-w-0 flex-col gap-0.5 md:gap-1">

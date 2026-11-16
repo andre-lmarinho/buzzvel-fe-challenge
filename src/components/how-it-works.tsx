@@ -39,7 +39,7 @@ export function HowItWorks() {
 					>
 						<div
 							aria-hidden="true"
-							className={`relative z-10 size-14 ${item.iconClass}`}
+							className={`ornament relative z-10 size-14 ${item.iconClass}`}
 						/>
 						<p className="mt-6 text-xs font-semibold tracking-[0.12em] text-subtle uppercase">
 							Step {item.step}

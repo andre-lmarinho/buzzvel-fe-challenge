@@ -47,7 +47,7 @@ export function FinalCta() {
 		<PageSection id="join" className="bg-yellow-soft">
 			<div
 				aria-hidden="true"
-				className="absolute select-none inset-0 hidden overflow-hidden md:block"
+				className="absolute ornament inset-0 hidden overflow-hidden md:block"
 			>
 				{SHAPES.map((className) => (
 					<div key={className} className={`absolute ${className}`} />
