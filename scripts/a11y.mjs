@@ -78,6 +78,7 @@ try {
 
 			if (width === 402) {
 				await page.click('button[aria-controls="mobile-menu"]');
+				await page.waitForTimeout(400); // let the open animation settle
 				violations.push(...(await scan(page, "402 menu open")));
 			}
 			if (width === 1280) {

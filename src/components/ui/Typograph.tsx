@@ -1,7 +1,5 @@
 import type { ComponentProps } from "react";
-
-const cx = (...classes: Array<string | undefined>) =>
-	classes.filter(Boolean).join(" ");
+import { cx } from "../utils/cx";
 
 // Figma typography. Components are pure: margins/widths live at the usage site.
 export function H1({ className, ...props }: ComponentProps<"h1">) {
@@ -35,15 +33,6 @@ export function H3({ className, ...props }: ComponentProps<"h3">) {
 				"font-display text-xl leading-7 font-bold md:leading-8",
 				className,
 			)}
-			{...props}
-		/>
-	);
-}
-
-export function P({ className, ...props }: ComponentProps<"p">) {
-	return (
-		<p
-			className={cx("text-base leading-6.5 md:text-lg md:leading-7", className)}
 			{...props}
 		/>
 	);

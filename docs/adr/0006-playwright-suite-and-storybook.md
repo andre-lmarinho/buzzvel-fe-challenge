@@ -13,7 +13,7 @@ What actually needs testing in this codebase: rendered behavior (menu, form, anc
 
 - **Playwright test suite** (`tests/page.spec.ts`, `pnpm test`, `@playwright/test`): skip link as first Tab stop, menu `aria-expanded` open/close cycle, form submission with `role="status"`, native email validation, no horizontal overflow at 320/768/1280 px, anchor navigation, content images loading. The dev-time sweep's behaviors are now committed and reproducible; the sweep itself stays untracked.
 - **SEO URLs** (`tests/seo.spec.ts`): the suite builds with `NEXT_PUBLIC_SITE_URL=http://localhost:3100`; sitemap.xml, robots.txt and llms.txt must serve exactly that origin.
-- **Storybook** (`@storybook/nextjs-vite`, `pnpm storybook`): stories for the five `src/components/ui/` primitives only — variant matrices and type roles, not per-section stories. Stories are not imported by the app, so they add nothing to the page bundle.
+- **Storybook** (`@storybook/nextjs-vite`, `pnpm storybook`): stories for the `src/components/ui/` primitives only — variant matrices and type roles, not per-section stories. Stories are not imported by the app, so they add nothing to the page bundle.
 - **Vitest: rejected for now.** No pure logic to justify a unit layer; revisit if `site-url.ts` grows or form validation leaves native HTML.
 
 ## Consequences

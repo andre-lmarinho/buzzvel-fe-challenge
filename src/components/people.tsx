@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
-import { SectionContainer } from "./ui/SectionContainer";
+import { Button } from "./ui/Button";
+import { PageSection } from "./ui/PageSection";
 import { Eyebrow, H2 } from "./ui/Typograph";
 
 const PHOTO_COLUMNS = [
@@ -66,59 +66,55 @@ const PHOTO_COLUMNS = [
 	},
 ];
 
-const photoFrameClass = "relative shrink-0 overflow-hidden rounded shadow-sm";
-
 export function People() {
 	return (
-		<section id="people" className="bg-cream">
-			<SectionContainer className="grid min-h-197.25 items-center gap-5.5 pt-15 pb-12.75 md:min-h-0 md:grid-cols-2 md:gap-layout md:py-people">
-				<div>
-					<Eyebrow className="text-blue">The people</Eyebrow>
-					<H2 className="mt-2">Meet international students &amp; teachers</H2>
-					<p className="mt-6 max-w-132.5 text-base leading-6.5 text-ink md:mt-8 md:text-lg md:leading-7 md:text-muted">
-						Morbi sit egestas dignissim pharetra, sed amet. Tempus justo
-						senectus risus ac vel, velit, nunc. Eget commodo eget in aliquam
-						facilisi facilisi nec magna hendrerit. Placerat ipsum sit tellus
-						urna, faucibus aenean lorem faucibus integer.
-					</p>
-					<Link
-						href="#contact"
-						className="mt-6 inline-flex h-13.5 items-center justify-center rounded-lg border border-line bg-white px-7 text-sm font-bold text-ink hover:bg-white/60 md:mt-8 md:px-5 xl:px-7"
-					>
-						Explore teachers and students
-					</Link>
-				</div>
+		<PageSection
+			id="people"
+			className="bg-cream grid items-center gap-5.5 md:py-30 md:grid-cols-2 md:gap-layout"
+		>
+			<div>
+				<Eyebrow className="text-blue">The people</Eyebrow>
+				<H2 className="mt-2">Meet international students &amp; teachers</H2>
+				<p className="text-base leading-6.5 md:text-lg md:leading-7 my-6 max-w-132.5 text-ink md:my-8 md:text-muted">
+					Morbi sit egestas dignissim pharetra, sed amet. Tempus justo senectus
+					risus ac vel, velit, nunc. Eget commodo eget in aliquam facilisi
+					facilisi nec magna hendrerit. Placerat ipsum sit tellus urna, faucibus
+					aenean lorem faucibus integer.
+				</p>
+				<Button href="#contact" variant="outline" size="xl">
+					Explore teachers and students
+				</Button>
+			</div>
 
-				<div className="relative mx-auto aspect-square w-[calc(100%-2rem)] max-w-125 before:absolute before:inset-0 before:rounded-full before:bg-blue-soft md:w-full">
-					<div className="absolute top-[3%] left-[-4.85%] flex h-[93.8%] w-[109.7%] items-center gap-[3.3%] @container md:top-[-2.25%] md:left-[-3%] md:h-[104.5%] md:w-[106%] md:gap-[3%]">
-						{PHOTO_COLUMNS.map((column, columnIndex) => (
-							<div
-								key={column.photos[0].src}
-								className={`flex flex-col gap-2 md:gap-[2.4cqw] ${column.className}`}
-							>
-								{column.photos.map((photo, photoIndex) => (
-									<div
-										key={photo.src}
-										className={`${photoFrameClass} ${photo.className}`}
-									>
-										<Image
-											src={photo.src}
-											alt={
-												columnIndex === 0 && photoIndex === 0
-													? "International students and teachers"
-													: ""
-											}
-											fill
-											sizes="(min-width: 768px) 140px, 94px"
-											className="object-cover"
-										/>
-									</div>
-								))}
-							</div>
-						))}
-					</div>
+			<div className="relative mx-auto aspect-square w-[calc(100%-2rem)] max-w-125 before:absolute before:inset-0 before:rounded-full before:bg-blue-soft md:w-full">
+				<div className="absolute top-[3%] left-[-4.85%] flex h-[93.8%] w-[109.7%] items-center gap-[3.3%] @container md:top-[-2.25%] md:left-[-3%] md:h-[104.5%] md:w-[106%] md:gap-[3%]">
+					{PHOTO_COLUMNS.map((column, columnIndex) => (
+						<div
+							key={column.photos[0].src}
+							className={`flex flex-col gap-2 md:gap-[2.4cqw] ${column.className}`}
+						>
+							{column.photos.map((photo, photoIndex) => (
+								<div
+									key={photo.src}
+									className={`relative shrink-0 overflow-hidden rounded shadow-sm ${photo.className}`}
+								>
+									<Image
+										src={photo.src}
+										alt={
+											columnIndex === 0 && photoIndex === 0
+												? "International students and teachers"
+												: ""
+										}
+										fill
+										sizes="(min-width: 768px) 140px, 94px"
+										className="object-cover"
+									/>
+								</div>
+							))}
+						</div>
+					))}
 				</div>
-			</SectionContainer>
-		</section>
+			</div>
+		</PageSection>
 	);
 }

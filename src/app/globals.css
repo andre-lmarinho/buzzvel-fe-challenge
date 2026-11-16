@@ -5,8 +5,6 @@
 	--breakpoint-tablet: 54rem;
 	--breakpoint-wide: 70rem;
 
-	--spacing-section: clamp(5rem, 7.8125vw, 6.25rem);
-	--spacing-people: calc(var(--spacing-section) + 0.6875rem);
 	--spacing-layout: clamp(2.5rem, 4.6875vw, 3.75rem);
 	--spacing-contact: clamp(2.5rem, calc(23.4375vw - 12.5rem), 6.25rem);
 	--spacing-hero-inset: clamp(0rem, calc((78rem - 100vw) / 2), 1.5rem);
@@ -16,17 +14,35 @@
 
 	--color-ink: #171b2c;
 	--color-muted: #656770;
-	--color-subtle: #6d7384;
+	--color-subtle: #6c7283;
 	--color-blue: #3157f6;
 	--color-blue-soft: #e2e8ff;
 	--color-orange: #ff704d;
 	--color-orange-soft: #ffcb9f;
 	--color-yellow: #ffee7e;
 	--color-yellow-soft: #fff1c2;
+	--color-yellow-dark: #e9d659;
+	--color-peach: #fae4da;
 	--color-cream: #f9f8f3;
 	--color-line: #dbdfeb;
 	--color-white-2: #e7e7ec;
 	--color-white-3: #9e9faa;
+}
+
+@utility ornament {
+	pointer-events: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+@utility page-gutters {
+	padding-inline: 1.25rem;
+	@media (min-width: 34rem) {
+		padding-inline: max(1.25rem, calc((100% - 33.75rem) / 2));
+	}
+	@media (min-width: 48rem) {
+		padding-inline: max(2.5rem, calc((100% - 70rem) / 2));
+	}
 }
 
 html {
@@ -41,11 +57,103 @@ body {
 	font-family: var(--font-body);
 }
 
+/* Branded scrollbar: 10px lane with a 6px blue thumb (2px transparent
+   border + content-box clip); firefox uses the thin native variant. */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--color-ink) transparent;
+}
+::-webkit-scrollbar {
+	width: 0.625rem;
+	height: 0.625rem;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	border: 0.125rem solid transparent;
+	border-radius: 999px;
+	background-color: var(--color-ink);
+	background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--color-blue);
+}
+
 /* White shadow separates the focus ring from any background. */
 :focus-visible {
 	outline: 2px solid var(--color-blue);
 	outline-offset: 2px;
 	box-shadow: 0 0 0 4px var(--color-white);
+}
+
+/* Press feedback for all interactive elements; `scale` is a no-op on inline links. */
+a:active,
+button:active {
+	scale: 0.98;
+}
+
+/* Hamburger built from three bars (span + ::before/::after); open state is
+   driven by the button's aria-expanded, so the morph is pure CSS. */
+.menu-icon,
+.menu-icon::before,
+.menu-icon::after {
+	display: block;
+	width: 1.25rem;
+	height: 2px;
+	border-radius: 999px;
+	background-color: var(--color-ink);
+	transition:
+		transform 0.2s ease,
+		opacity 0.2s ease,
+		background-color 0.2s ease;
+}
+.menu-icon {
+	position: relative;
+}
+.menu-icon::before,
+.menu-icon::after {
+	content: "";
+	position: absolute;
+	left: 0;
+}
+.menu-icon::before {
+	top: -0.375rem;
+}
+.menu-icon::after {
+	top: 0.375rem;
+}
+[aria-expanded="true"] .menu-icon {
+	background-color: transparent;
+}
+[aria-expanded="true"] .menu-icon::before {
+	transform: translateY(0.375rem) rotate(45deg);
+}
+[aria-expanded="true"] .menu-icon::after {
+	transform: translateY(-0.375rem) rotate(-45deg);
+}
+
+/* Scroll lock while the menu is open (CSS :has, no JS); links stagger on open. */
+html:has(button[aria-expanded="true"]) {
+	overflow: hidden;
+}
+#mobile-menu li {
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
+}
+#mobile-menu[data-open="false"] li {
+	opacity: 0;
+	transform: translateY(0.5rem);
+}
+#mobile-menu[data-open="true"] li:nth-child(2) {
+	transition-delay: 40ms;
+}
+#mobile-menu[data-open="true"] li:nth-child(3) {
+	transition-delay: 80ms;
+}
+#mobile-menu[data-open="true"] li:nth-child(4) {
+	transition-delay: 120ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
