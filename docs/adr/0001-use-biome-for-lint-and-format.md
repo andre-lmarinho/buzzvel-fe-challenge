@@ -25,6 +25,7 @@ Use **Biome** for both linting and formatting.
 
 - Single dependency (`@biomejs/biome`) and single config (`biome.json`).
 - One gate command (`biome check .`) that covers lint, format diff and import organizing; `biome check --write .` fixes in place.
+- VCS integration (`vcs.useIgnoreFile`): Biome respects `.gitignore`, so generated output is never linted.
 - Recommended rules plus the React and Next domains as the baseline rule set.
 - Type checking stays separate (`tsc --noEmit`); Biome does not type-check.
 

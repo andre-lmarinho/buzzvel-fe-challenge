@@ -7,5 +7,9 @@ out/
 next-env.d.ts
 *.tsbuildinfo
 
+# storybook
+storybook-static/
+test-results/
+
 # env
 .env*

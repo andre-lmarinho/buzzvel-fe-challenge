@@ -9,6 +9,7 @@ Start by what you need to verify or change. `../README.md` covers install, comma
 - [ADR 0003 — CI/CD pipeline](adr/0003-ci-cd-pipeline.md)
 - [ADR 0004 — AVIF with WebP fallback](adr/0004-image-formats-avif-with-webp-fallback.md)
 - [ADR 0005 — Fonts from versioned files](adr/0005-serve-fonts-locally-from-versioned-files.md)
+- [ADR 0006 — Playwright suite + Storybook](adr/0006-playwright-suite-and-storybook.md)
 
 ## Feature records (what shipped, and what deliberately didn't)
 

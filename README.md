@@ -20,6 +20,7 @@ Node 26 (`.nvmrc` + `engines`) and pnpm 11 (`packageManager`, Corepack-resolved)
 - **Typography** — Inter v3.19 and Plus Jakarta Sans self-hosted and **pixel-validated against the Figma frames** (max error 0.82 px); Google Fonts cannot pin a version, so files are versioned in-repo: [ADR 0005](docs/adr/0005-serve-fonts-locally-from-versioned-files.md).
 - **Images** — served as AVIF with WebP fallback through the `next/image` optimizer; content negotiation verified live: [ADR 0004](docs/adr/0004-image-formats-avif-with-webp-fallback.md).
 - **Accessibility** — skip link, semantic landmarks, 44 px controls, focus indicators that survive any background, `prefers-reduced-motion` support; audited against **WCAG 2.2 A/AA**: [accessibility.md](docs/accessibility.md), full [audit](docs/logs/wcag-audit.md).
+- **Tested** — Playwright suite (interactions, SEO URLs) and Storybook for the UI primitives ([ADR 0006](docs/adr/0006-playwright-suite-and-storybook.md)).
 - **SEO** — canonical URL, `robots.txt`, `sitemap.xml`, Open Graph image, `llms.txt`: [seo.md](docs/seo.md).
 
 ## Quality gates
@@ -31,8 +32,10 @@ Node 26 (`.nvmrc` + `engines`) and pnpm 11 (`packageManager`, Corepack-resolved)
 | `pnpm format` / `pnpm fix` | Format files / fix lint in place |
 | `pnpm typecheck` | `tsc --noEmit` |
 | `pnpm a11y` | axe-core scan of the built page (WCAG 2.0–2.2 A/AA tags, 3 widths + menu/form states) |
+| `pnpm test` | Build + Playwright suite over the page's interactions (`tests/page.spec.ts`) |
+| `pnpm storybook` / `pnpm storybook:build` | Component playground for the UI primitives / static build |
 
-GitHub Actions runs **lint, typecheck, build and the a11y scan** in parallel on every push to `main` and every PR (`.github/workflows/ci.yml`, [ADR 0003](docs/adr/0003-ci-cd-pipeline.md)); a Husky pre-commit hook lints staged files. Deployment is handled by Vercel's Git integration.
+Every push to `main` and every PR runs five parallel checks — lint, typecheck, build, a11y scan and Playwright suite ([ADR 0003](docs/adr/0003-ci-cd-pipeline.md)). Husky pre-commits lint staged files; deploys are Vercel's Git integration.
 
 ## Key decisions
 
@@ -43,6 +46,7 @@ GitHub Actions runs **lint, typecheck, build and the a11y scan** in parallel on 
 | [0003](docs/adr/0003-ci-cd-pipeline.md) | 4 parallel CI jobs, shared setup | Fast feedback; a11y violations fail the build |
 | [0004](docs/adr/0004-image-formats-avif-with-webp-fallback.md) | AVIF first, WebP fallback | Smallest transfer in browsers that negotiate; standard optimizer |
 | [0005](docs/adr/0005-serve-fonts-locally-from-versioned-files.md) | Local versioned font files | Metric drift from unpinned Google Fonts cannot regress the design; latin subsets cut transfer to ~40 KB per family |
+| [0006](docs/adr/0006-playwright-suite-and-storybook.md) | Playwright suite + Storybook for UI primitives | Rendered behavior reproducible from a clone; primitives isolated; no unit layer — there is no pure logic to test |
 
 ## Audits
 
@@ -53,7 +57,6 @@ GitHub Actions runs **lint, typecheck, build and the a11y scan** in parallel on 
 
 - Navigation targets are in-page anchors — the challenge is a single page.
 - The contact form is mock (client-side confirmation, no backend), per challenge scope.
-- No Storybook or automated component tests (optional in the challenge brief).
 
 ## Time spent
 
@@ -61,10 +64,14 @@ GitHub Actions runs **lint, typecheck, build and the a11y scan** in parallel on 
 | --- | --- | --- | --- |
 | Project setup | 2026-11-14 | Tooling, CI/CD pipeline | ≈ 1h10 |
 | Design implementation | 2026-11-14 | Tokens, fonts, accessibility baseline, assets from Figma, full responsive page (8 sections + footer) | ≈ 3h30 |
+| SEO, accessibility, performance | 2026-11-15 | Canonical/sitemap/robots, WCAG pass, font and image transfer | ≈ 1h |
+| Tests and docs | 2026-11-16 | Playwright suite, Storybook, SEO URL tests | ≈ 30min |
 
-**Total: ≈ 4h40**, plus follow-up passes for SEO, accessibility and performance on 2026-11-15 (documented in the ADRs and the [logs](docs/logs)).
+**Total: ≈ 6h10** for 2026-11-14 (see the [logs](docs/logs) for the later stages).
 
 ## AI tools
 
-- **OpenCode** (agent, GPT-5.6 Sol) with skills for engineering docs, PR writing, UI review and React/Next performance guidelines.
-- **How the results were checked:** Figma references (MCP/REST), Playwright screenshots from 320 to 1920 px, Lighthouse audits, the Impeccable detector and the local gates (`pnpm build`, `pnpm lint`, `pnpm typecheck`, axe scan). All commits were reviewed by hand before merging.
+- **Agents:** frontier coding models (GLM family, OpenAI Codex, Claude) orchestrated through OpenCode, with skills for UI review, engineering documentation and React/Next.js performance.
+- **Design data:** Figma MCP and the Figma REST API — frame measurements, token extraction and the pixel-diff font validation behind [ADR 0005](docs/adr/0005-serve-fonts-locally-from-versioned-files.md).
+- **Review:** CodeRabbit on pull requests, plus hand review of every commit.
+- **How the results were checked:** Playwright screenshots from 320 to 1920 px, Lighthouse audits, and the local gates (`pnpm lint`, `pnpm typecheck`, `pnpm build`, `pnpm a11y`, `pnpm test`). Every claim in `docs/` was verified against the code it describes.

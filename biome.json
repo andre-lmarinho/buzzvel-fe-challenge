@@ -1,14 +1,15 @@
 {
 	"$schema": "https://biomejs.dev/schemas/latest/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
 	"files": {
 		"includes": [
 			"**",
-			"!**/.next",
-			"!**/out",
-			"!**/node_modules",
 			"!**/*.md",
 			"!**/public",
-			"!**/next-env.d.ts",
 			"!**/docs/logs/lighthouse-mobile.html"
 		]
 	},
