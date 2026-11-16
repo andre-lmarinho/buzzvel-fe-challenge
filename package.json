@@ -17,7 +17,7 @@
 		"test": "NEXT_PUBLIC_SITE_URL=http://localhost:3100 next build && playwright test",
 		"storybook": "storybook dev -p 6006",
 		"storybook:build": "storybook build",
-		"typecheck": "tsc --noEmit",
+		"typecheck": "next typegen && tsc --noEmit",
 		"prepare": "husky"
 	},
 	"dependencies": {
