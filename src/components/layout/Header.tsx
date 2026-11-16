@@ -35,7 +35,7 @@ export function Header() {
 						<Link
 							key={item.label}
 							href={item.href}
-							className="flex h-11 items-center rounded px-2 text-sm text-muted hover:text-blue"
+							className="flex h-11 items-center rounded px-2 text-sm text-muted transition-colors hover:text-blue"
 						>
 							{item.label}
 						</Link>

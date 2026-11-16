@@ -20,7 +20,7 @@ export function Testimonial() {
 					<figure className="mt-8 flex items-center gap-4">
 						<Image
 							src="/assets/photo-avatar-testimonial.jpg"
-							alt="Alex Morgan"
+							alt=""
 							width={48}
 							height={48}
 							className="size-12 rounded-full object-cover"

@@ -42,7 +42,7 @@ export function Categories() {
 						<li key={category.number}>
 							<a
 								href="#featured-course"
-								className="group flex h-56.75 flex-col rounded-2xl border border-line bg-white p-6 hover:border-blue sm:h-full sm:min-h-56.75 wide:min-h-66 wide:p-7 xl:h-66"
+								className="group flex h-56.75 flex-col rounded-2xl border border-line bg-white p-6 transition-colors hover:border-blue sm:h-full sm:min-h-56.75 wide:min-h-66 wide:p-7 xl:h-66"
 							>
 								<Badge variant="soft" className="mt-1 self-start">
 									{category.number}

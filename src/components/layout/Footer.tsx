@@ -47,7 +47,7 @@ export function Footer() {
 									<li key={link}>
 										<Link
 											href="#contact"
-											className="flex h-8 w-fit items-center rounded px-2 -mx-2 text-sm leading-6 text-white-3 hover:text-white"
+											className="flex h-8 w-fit items-center rounded px-2 -mx-2 text-sm leading-6 text-white-3 transition-colors hover:text-white"
 										>
 											{link}
 										</Link>
