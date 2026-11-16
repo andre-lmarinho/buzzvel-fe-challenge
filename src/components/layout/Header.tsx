@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../ui/Button";
 import { Logo } from "../ui/Logo";
+import { cx } from "../utils/cx";
 
 const NAV = [
 	{ label: "Courses", href: "#categories" },
@@ -15,6 +15,15 @@ const NAV = [
 
 export function Header() {
 	const [open, setOpen] = useState(false);
+
+	useEffect(() => {
+		if (!open) return;
+		const onKey = (event: KeyboardEvent) => {
+			if (event.key === "Escape") setOpen(false);
+		};
+		window.addEventListener("keydown", onKey);
+		return () => window.removeEventListener("keydown", onKey);
+	}, [open]);
 
 	return (
 		<header className="relative z-30 border-b border-line bg-cream">
@@ -53,62 +62,70 @@ export function Header() {
 
 				<button
 					type="button"
-					className="flex size-9 items-center justify-center lg:hidden"
+					className="flex size-11 items-center justify-center rounded-lg border border-line bg-white transition-colors hover:border-blue lg:hidden"
 					aria-expanded={open}
 					aria-controls="mobile-menu"
 					aria-label={open ? "Close menu" : "Open menu"}
 					onClick={() => setOpen((v) => !v)}
 				>
-					<Image
-						src="/assets/icon-menu.svg"
-						alt=""
-						width={24}
-						height={24}
-						loading="eager"
-						className="size-6"
-					/>
+					<span aria-hidden="true" className="menu-icon" />
 				</button>
 			</div>
 
-			{open && (
-				<nav
-					id="mobile-menu"
-					aria-label="Main"
-					className="border-t border-line bg-white px-5 py-6 lg:hidden"
+			<nav
+				id="mobile-menu"
+				aria-label="Main"
+				data-open={open}
+				className={cx(
+					"fixed inset-x-0 bottom-0 top-17 z-20 flex flex-col overflow-y-auto bg-cream transition-[opacity,transform,visibility] duration-300 ease-out lg:hidden",
+					open
+						? "visible translate-y-0 opacity-100"
+						: "invisible -translate-y-3 opacity-0",
+				)}
+			>
+				<div
+					aria-hidden="true"
+					className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
 				>
-					<ul className="flex flex-col gap-5">
-						{NAV.map((item) => (
-							<li key={item.label}>
-								<Link
-									href={item.href}
-									className="text-base font-semibold text-ink"
-									onClick={() => setOpen(false)}
-								>
+					<div className="absolute -right-20 -bottom-16 size-56 rounded-full bg-blue-soft" />
+				</div>
+				<ul className="page-gutters my-auto flex flex-col">
+					{NAV.map((item, index) => (
+						<li key={item.label} className="border-b border-line">
+							<Link
+								href={item.href}
+								className="flex items-center gap-4 py-5 text-ink transition-colors hover:text-blue"
+								onClick={() => setOpen(false)}
+							>
+								<span className="translate-y-0.5 text-sm font-bold tabular-nums text-blue">
+									{String(index + 1).padStart(2, "0")}
+								</span>
+								<span className="font-display text-3xl font-extrabold tracking-tight">
 									{item.label}
-								</Link>
-							</li>
-						))}
-					</ul>
-					<div className="mt-6 flex flex-col gap-3">
-						<Button
-							href="#contact"
-							variant="ghost"
-							size="lg"
-							onClick={() => setOpen(false)}
-						>
-							Log in
-						</Button>
-						<Button
-							href="#categories"
-							variant="solid"
-							size="lg"
-							onClick={() => setOpen(false)}
-						>
-							Start learning
-						</Button>
-					</div>
-				</nav>
-			)}
+								</span>
+							</Link>
+						</li>
+					))}
+				</ul>
+				<div className="page-gutters flex flex-col gap-3 pt-6 pb-10">
+					<Button
+						href="#contact"
+						variant="ghost"
+						size="lg"
+						onClick={() => setOpen(false)}
+					>
+						Log in
+					</Button>
+					<Button
+						href="#categories"
+						variant="solid"
+						size="lg"
+						onClick={() => setOpen(false)}
+					>
+						Start learning
+					</Button>
+				</div>
+			</nav>
 		</header>
 	);
 }
