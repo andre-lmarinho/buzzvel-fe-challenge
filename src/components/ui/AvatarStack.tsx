@@ -1,7 +1,17 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import type { ComponentProps } from "react";
+import avatar1 from "../../../public/assets/photo-avatar-1.jpg";
+import avatar2 from "../../../public/assets/photo-avatar-2.jpg";
+import avatar3 from "../../../public/assets/photo-avatar-3.jpg";
+import avatar4 from "../../../public/assets/photo-avatar-4.jpg";
 import { cx } from "../utils/cx";
+
+// Static imports: the build fails if an avatar file is missing or renamed.
+const STACKS = {
+	3: [avatar1, avatar2, avatar3],
+	4: [avatar1, avatar2, avatar3, avatar4],
+} as const satisfies Record<number, readonly StaticImageData[]>;
 
 // Caption figure, same number the marketing copy uses.
 const LEARNERS = "24,000+";
@@ -22,7 +32,8 @@ const avatarVariants = cva("relative shrink-0 rounded-full ring-2", {
 
 type Props = ComponentProps<"div"> &
 	VariantProps<typeof avatarVariants> & {
-		count: number;
+		// Typed to the stacks the assets support: an invalid count does not compile.
+		count: keyof typeof STACKS;
 		// Toggles the hardcoded social-proof line ("Trusted by … learners").
 		caption?: boolean;
 	};
@@ -35,10 +46,6 @@ export function AvatarStack({
 	className,
 	...props
 }: Props) {
-	const srcs = Array.from(
-		{ length: count },
-		(_, i) => `/assets/photo-avatar-${i + 1}.jpg`,
-	);
 	return (
 		<div
 			className={cx(
@@ -49,13 +56,11 @@ export function AvatarStack({
 			{...props}
 		>
 			<div className="flex">
-				{srcs.map((src) => (
-					<span key={src} className={avatarVariants({ size, ring })}>
+				{STACKS[count].map((avatar) => (
+					<span key={avatar.src} className={avatarVariants({ size, ring })}>
 						<Image
-							src={src}
+							src={avatar}
 							alt=""
-							width={80}
-							height={80}
 							sizes="40px"
 							className="size-full rounded-full object-cover"
 						/>
