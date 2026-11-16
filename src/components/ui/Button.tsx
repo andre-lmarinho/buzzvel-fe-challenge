@@ -2,8 +2,6 @@ import { cva, type VariantProps } from "class-variance-authority";
 import Link from "next/link";
 import type { ComponentProps } from "react";
 
-// Each variant owns its classes (no overlap with the base) — CVA only
-// concatenates, it does not resolve conflicting utilities.
 export const buttonVariants = cva(
 	"inline-flex items-center justify-center rounded-lg text-sm transition",
 	{

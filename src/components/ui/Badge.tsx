@@ -1,10 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import type { ComponentProps } from "react";
 
-// Variants mirror the pills in the Figma frames: `soft` is the blue number
-// tag, `pill` the inline highlight inside floating cards, `outline` the
-// neutral chip, `label` the yellow uppercase tag. `outline` leaves text color
-// open — it is white on dark surfaces.
 export const badgeVariants = cva("inline-flex items-center", {
 	variants: {
 		variant: {

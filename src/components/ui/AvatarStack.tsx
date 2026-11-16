@@ -6,24 +6,19 @@ import { cx } from "../utils/cx";
 // Caption figure, same number the marketing copy uses.
 const LEARNERS = "24,000+";
 
-// CVA as in Button: variants style each avatar span — cream uses ring +
-// inner border, yellow only the inner border.
-const avatarVariants = cva(
-	"relative shrink-0 rounded-full after:absolute after:inset-0 after:rounded-full after:border-2",
-	{
-		variants: {
-			ring: {
-				cream: "ring-2 ring-cream after:border-cream",
-				yellow: "after:border-yellow",
-			},
-			size: {
-				sm: "size-8",
-				md: "size-10",
-			},
+const avatarVariants = cva("relative shrink-0 rounded-full ring-2", {
+	variants: {
+		ring: {
+			cream: "ring-cream",
+			yellow: "ring-yellow",
 		},
-		defaultVariants: { size: "sm", ring: "cream" },
+		size: {
+			sm: "size-7 not-first:-ml-1.25",
+			md: "size-9.5 not-first:-ml-1.5",
+		},
 	},
-);
+	defaultVariants: { size: "sm", ring: "cream" },
+});
 
 type Props = ComponentProps<"div"> &
 	VariantProps<typeof avatarVariants> & {
@@ -40,7 +35,6 @@ export function AvatarStack({
 	className,
 	...props
 }: Props) {
-	// Four avatar files ship in /assets; `count` slices that set.
 	const srcs = Array.from(
 		{ length: count },
 		(_, i) => `/assets/photo-avatar-${i + 1}.jpg`,
@@ -49,12 +43,12 @@ export function AvatarStack({
 		<div
 			className={cx(
 				"flex",
-				caption ? "items-center gap-3" : undefined,
+				caption ? "items-center gap-4.5" : undefined,
 				className,
 			)}
 			{...props}
 		>
-			<div className="flex -space-x-2">
+			<div className="flex">
 				{srcs.map((src) => (
 					<span key={src} className={avatarVariants({ size, ring })}>
 						<Image
