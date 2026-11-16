@@ -5,7 +5,7 @@ Status: **technical basics shipped; content strategy deliberately out.** This pa
 ## What ships
 
 - Metadata in `src/app/layout.tsx`: `title` and `description`, `metadataBase` (from `src/lib/site-url.ts`), `alternates.canonical: "./"`, an `openGraph` block (title, description, `type: "website"`, `url`), `themeColor` in the viewport, `lang="en"`, and the favicon (`src/app/icon.svg`).
-- **Base URL** (`src/lib/site-url.ts`): `NEXT_PUBLIC_SITE_URL` → `VERCEL_PROJECT_PRODUCTION_URL` → `VERCEL_URL` → `localhost:3000`, with `https://` prefixed when missing. Production values are injected by Vercel; a custom domain only needs `NEXT_PUBLIC_SITE_URL`.
+- **Base URL** (`src/lib/site-url.ts`): `NEXT_PUBLIC_SITE_URL` → `VERCEL_PROJECT_PRODUCTION_URL` → `localhost:3000`, with `https://` prefixed when missing. Production values are injected by Vercel; a custom domain only needs `NEXT_PUBLIC_SITE_URL`.
 - **`robots.txt`** (`src/app/robots.ts`): allow all, links the sitemap.
 - **`sitemap.xml`** (`src/app/sitemap.ts`): the single page with `lastModified`.
 - **OG image** (`src/app/opengraph-image.tsx`): 1200×630 PNG, blue background, "luma." wordmark and tagline; Next wires it into `og:image` automatically.

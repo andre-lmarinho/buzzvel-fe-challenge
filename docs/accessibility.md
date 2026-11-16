@@ -4,7 +4,7 @@ What the page ships with and how it was verified. Target: WCAG 2.2 A/AA. Fixes t
 
 ## In place
 
-- **Landmarks and headings.** `header` / `main` / `footer`, four labeled `nav`s (desktop, mobile menu, three footer columns), a single `h1` (hero), and a skip link to `#main-content` (`src/app/layout.tsx`).
+- **Landmarks and headings.** `header` / `main` / `footer`, five labeled `nav`s (desktop, mobile menu, three footer columns), a single `h1` (hero), and a skip link to `#main-content` (`src/app/layout.tsx`).
 - **Keyboard focus.** Global `:focus-visible`: 2px blue ring, 2px offset, 4px white halo (`globals.css`). The halo is load-bearing: a bare ring is invisible on blue sections (WCAG 2.4.7); ring + halo survives any background (Nov 14, 2026).
 - **Mobile menu.** Toggle exposes `aria-expanded`, `aria-controls="mobile-menu"` and a dynamic `aria-label` ("Open/Close menu"). Verified by Playwright interaction at every checked width.
 - **Forms.** `Input`/`Textarea` take a required `label` prop — a field cannot exist unlabeled — with `useId()` keeping `id`/`for` unique. Submission confirmation uses `role="status"`; validation is native HTML (`required`, `type="email"`). The form is a client-side demo (no backend).
@@ -16,7 +16,7 @@ What the page ships with and how it was verified. Target: WCAG 2.2 A/AA. Fixes t
 
 ## How it was checked
 
-- Biome's a11y lint rules run on `src/` (`biome.json` excludes `public/` from the linter).
+- Biome's a11y lint rules run on `src/` (`biome.json` excludes `public/` entirely from lint and format).
 - An automated axe-core scan runs in CI (`pnpm a11y`, [ADR 0003](adr/0003-ci-cd-pipeline.md)): the production build at 402/768/1280 px plus menu-open and form-submitted states, WCAG 2.0–2.2 A/AA tags, fails on any violation.
 - An automated Playwright sweep (Nov 15, 2026; final run: 211 viewport widths) checks, per width: first Tab lands on the skip link, the mobile menu opens/closes with correct `aria-expanded`, the demo form renders, content images load, and there is no horizontal overflow — excluding `aria-hidden` elements.
 - A full-criterion audit against WCAG 2.2 A/AA is recorded in the [WCAG audit](logs/wcag-audit.md), including an Orca screen-reader session.

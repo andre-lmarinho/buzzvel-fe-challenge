@@ -5,7 +5,7 @@
 
 ## Context
 
-The project is a single page, so a full pipeline is in theory overkill — but it is a Next.js project and the challenge asks for it to be built as a complete site inside, even if the surface is a single page. The repo is therefore treated like any production Next.js app: the gates that would guard a larger app run here. The public GitHub repo is a challenge requirement, and a Vercel deployment is linked as an extra. Reference CI data from the Biome migration article showed a CI change cutting 104 s → 79 s purely by parallelizing jobs — a result of job parallelism, not of any tooling switch.
+The project is a single page, so a full pipeline is in theory overkill — but it is a Next.js project and the challenge treats it as a complete site, even if the surface is a single page. The repo is therefore treated like any production Next.js app: the gates that would guard a larger app run here. The public GitHub repo is a challenge requirement, and a Vercel deployment is linked as an extra. Reference CI data from the Biome migration article showed a CI change cutting 104 s → 79 s purely by parallelizing jobs — a result of job parallelism, not of any tooling switch.
 
 ## Decision
 

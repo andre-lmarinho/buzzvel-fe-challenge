@@ -10,4 +10,4 @@ Intentional corrections and responsive decisions that differ from the source Fig
 | Contact form copy (mobile) | The mobile frame carries Portuguese form copy (`Nome completo`, `Enviar mensagem`, …) while desktop uses English — inconsistent content across frames. | Treated as a Figma typo; both breakpoints render the English copy. |
 | Inverse text link ("Browse all courses") | The design's softened white (`#e7e7ec`) on the blue section measures 4.46:1, below the 4.5:1 threshold for 14px bold text. | Uses pure white (`#ffffff`, 5.49:1) with the same hover behavior as the other solid CTAs (opacity). |
 
-These changes preserve the supplied visual direction while correcting an apparent content typo, accessibility, and behavior at widths not represented in Figma.
+These changes preserve the supplied visual direction while fixing an apparent content typo, an accessibility failure and behavior at widths not represented in Figma.

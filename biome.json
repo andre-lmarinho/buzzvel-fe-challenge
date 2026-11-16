@@ -8,7 +8,8 @@
 			"!**/node_modules",
 			"!**/*.md",
 			"!**/public",
-			"!**/next-env.d.ts"
+			"!**/next-env.d.ts",
+			"!**/docs/logs/lighthouse-mobile.html"
 		]
 	},
 	"css": {

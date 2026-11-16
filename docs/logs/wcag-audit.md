@@ -33,7 +33,7 @@ Legend: **P** pass (evidence established), **F** fail (evidence above), **N/A** 
 | 1.4.4 | Resize Text | P | 200% proxy (640 CSS px): no horizontal scroll, no clipped text, functionality intact |
 | 1.4.5 | Images of Text | P | All text is real text (logotype images exempt as logos) |
 | 1.4.10 | Reflow | P | 320 px: `scrollWidth` 320, zero clipped text blocks |
-| 1.4.11 | Non-text Contrast | **F** | Control boundaries 1.33:1/1.06:1 — accepted limitation (finding 4); focus indicator passes via white halo |
+| 1.4.11 | Non-text Contrast | **F** | Control boundaries 1.33:1/1.06:1 — accepted limitation (finding 1); focus indicator passes via white halo |
 | 1.4.12 | Text Spacing | P | Full override (1.5 lh, 2em spacing, 0.12em/0.16em): no control clipping; only the hidden skip link scrolls |
 | 1.4.13 | Content on Hover or Focus | N/A | No hover/focus-revealed content |
 | 2.1.1 | Keyboard | P | Full keyboard walk at 402/1280 px: everything reachable and operable |
@@ -45,7 +45,7 @@ Legend: **P** pass (evidence established), **F** fail (evidence above), **N/A** 
 | 2.4.1 | Bypass Blocks | P | Skip link is the first Tab stop at every width |
 | 2.4.2 | Page Titled | P | "Luma — Practical learning for curious people" |
 | 2.4.3 | Focus Order | P | Verified sequence is logical at 402/1280 px (content order, no jumps) |
-| 2.4.4 | Link Purpose (In Context) | P | Purposes discernible; footer mock anchors noted above |
+| 2.4.4 | Link Purpose (In Context) | P | Purposes discernible; footer links and "Log in" are labelled in-page anchors (single page) |
 | 2.4.5 | Multiple Ways | N/A | Single page |
 | 2.4.6 | Headings and Labels | P | Descriptive headings; form labels always present (required prop) |
 | 2.4.7 | Focus Visible | P | Blue ring + white halo observed at every stop of the walk |
