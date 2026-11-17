@@ -2,6 +2,23 @@
 
 Buzzvel Front-End Engineer coding challenge (November 2026) — the [Figma design](https://www.figma.com/design/G0zSf6gyynwzEusOCgm2CM/Buzzvel-FE---Test-2026) implemented as a production-quality one-page site with **Next.js App Router, TypeScript and Tailwind CSS v4**.
 
+## The submission in 25 seconds
+
+![Luma — submission walkthrough](docs/media/brag-walkthrough.gif)
+
+*[Video version](docs/media/brag.mp4) — 25 s, with audio.*
+
+*The walkthrough above — the brief, the page in one take, the documented decisions and the checks — is the short version. Everything it claims is documented below.*
+
+**Live deployment:** [buzzvel-fe-challenge-omega.vercel.app](https://buzzvel-fe-challenge-omega.vercel.app/)
+
+## How to review this submission
+
+- **The page** — the walkthrough above, or `pnpm dev` / the live link.
+- **The decisions** — [docs/adr/](docs/adr/): six ADRs covering tooling, CI/CD, image formats, self-hosted fonts and the test strategy.
+- **The verification** — [docs/accessibility.md](docs/accessibility.md) (WCAG 2.2 A/AA, real Orca screen-reader pass), [docs/logs/](docs/logs/) (WCAG audit matrix, Lighthouse reports), [docs/design-divergences.md](docs/design-divergences.md) (every intentional Figma divergence, justified).
+- **The source** — everything below; the Figma design prints are archived in [docs/the_Challenge/](docs/the_Challenge/) and every claim this README makes is verified against the code it describes.
+
 ## Quick start
 
 ```sh
@@ -16,7 +33,7 @@ Node 26 (`.nvmrc` + `engines`) and pnpm 11 (`packageManager`, Corepack-resolved)
 ## What ships
 
 - **Design implementation** — all 8 sections plus header and footer, at 320–1920 px, from design tokens defined once in `globals.css`. Intentional divergences from the Figma frames are documented and justified: [design-divergences.md](docs/design-divergences.md).
-- **Interactions** — mobile menu with correct `aria-expanded`/`aria-controls`, in-page anchor navigation with smooth scroll and reduced-motion fallback, and a mock contact form (required fields, `role="status"` confirmation — no backend, per challenge scope).
+- **Interactions** — full-screen mobile menu with correct `aria-expanded`/`aria-controls`, in-page anchor navigation with smooth scroll and reduced-motion fallback, and a mock contact form (required fields, `role="status"` confirmation — no backend, per challenge scope).
 - **Browser chrome** — the parts the OS draws around the page are branded too: `themeColor` in the `viewport` export tints the mobile browser UI, and the scrollbar is styled to the palette on every scroll container (10px lane, neutral ink thumb, blue on hover, Firefox via `scrollbar-width`/`scrollbar-color`) — CSS only.
 - **Typography** — Inter v3.19 and Plus Jakarta Sans self-hosted and **pixel-validated against the Figma frames** (max error 0.82 px); Google Fonts cannot pin a version, so files are versioned in-repo: [ADR 0005](docs/adr/0005-serve-fonts-locally-from-versioned-files.md).
 - **Images** — served as AVIF with WebP fallback through the `next/image` optimizer; content negotiation verified live: [ADR 0004](docs/adr/0004-image-formats-avif-with-webp-fallback.md).
@@ -31,9 +48,9 @@ Node 26 (`.nvmrc` + `engines`) and pnpm 11 (`packageManager`, Corepack-resolved)
 | `pnpm dev` / `pnpm build` / `pnpm start` | Dev server / production build / serve it |
 | `pnpm lint` | Biome lint + format + import check |
 | `pnpm format` / `pnpm fix` | Format files / fix lint in place |
-| `pnpm typecheck` | `tsc --noEmit` |
+| `pnpm typecheck` | `next typegen` + `tsc --noEmit` |
 | `pnpm a11y` | axe-core scan of the built page (WCAG 2.0–2.2 A/AA tags, 3 widths + menu/form states) |
-| `pnpm test` | Build + Playwright suite over the page's interactions (`tests/page.spec.ts`) |
+| `pnpm test` | Build + Playwright suite over the page's interactions (`tests/page.spec.ts`, `tests/seo.spec.ts`) |
 | `pnpm storybook` / `pnpm storybook:build` | Component playground for the UI primitives / static build |
 
 Every push to `main` and every PR runs five parallel checks — lint, typecheck, build, a11y scan and Playwright suite ([ADR 0003](docs/adr/0003-ci-cd-pipeline.md)). Husky pre-commits lint staged files; deploys are Vercel's Git integration.
@@ -44,15 +61,15 @@ Every push to `main` and every PR runs five parallel checks — lint, typecheck,
 | --- | --- | --- |
 | [0001](docs/adr/0001-use-biome-for-lint-and-format.md) | Biome for lint **and** format | One dependency, one gate command; includes a11y lint rules |
 | [0002](docs/adr/0002-use-pnpm-as-package-manager.md) | pnpm, version pinned | `packageManager` field → same package manager everywhere |
-| [0003](docs/adr/0003-ci-cd-pipeline.md) | 4 parallel CI jobs, shared setup | Fast feedback; a11y violations fail the build |
+| [0003](docs/adr/0003-ci-cd-pipeline.md) | Parallel CI jobs, shared setup | Fast feedback; a11y violations fail the build |
 | [0004](docs/adr/0004-image-formats-avif-with-webp-fallback.md) | AVIF first, WebP fallback | Smallest transfer in browsers that negotiate; standard optimizer |
 | [0005](docs/adr/0005-serve-fonts-locally-from-versioned-files.md) | Local versioned font files | Metric drift from unpinned Google Fonts cannot regress the design; latin subsets cut transfer to ~40 KB per family |
-| [0006](docs/adr/0006-playwright-suite-and-storybook.md) | Playwright suite + Storybook for UI primitives | Rendered behavior reproducible from a clone; primitives isolated; no unit layer — there is no pure logic to test |
+| [0006](docs/adr/0006-playwright-suite-and-storybook.md) | Playwright suite + Storybook for UI primitives | Rendered behavior reproducible from a clone; primitives isolated |
 
 ## Audits
 
 - [WCAG 2.2 A/AA audit](docs/logs/wcag-audit.md) — per-criterion matrix, one documented fail (1.4.11 control boundaries, kept for Figma fidelity) and the methods used, including a real Orca screen-reader pass.
-- [Lighthouse](docs/logs/lighthouse.md) — mobile method and results, Performance 98; the full report is attached: [lighthouse-mobile.html](docs/logs/lighthouse-mobile.html).
+- [Lighthouse](docs/logs/lighthouse.md) — mobile method and results on the production deployment: **Performance 100, Accessibility 100, Best Practices 100, SEO 100**; the full report is attached: [lighthouse-mobile.html](docs/logs/lighthouse-mobile.html).
 
 ## Known gaps
 
