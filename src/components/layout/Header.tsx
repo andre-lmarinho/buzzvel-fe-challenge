@@ -22,7 +22,18 @@ export function Header() {
 			if (event.key === "Escape") setOpen(false);
 		};
 		window.addEventListener("keydown", onKey);
-		return () => window.removeEventListener("keydown", onKey);
+		// keyboard focus stays inside the open menu: the page behind goes inert,
+		// including the skip link (its target, #main-content, would be unfocusable)
+		const page = document.querySelectorAll('main, footer, a[href="#main-content"]');
+		page.forEach((el) => {
+			el.setAttribute("inert", "");
+		});
+		return () => {
+			window.removeEventListener("keydown", onKey);
+			page.forEach((el) => {
+				el.removeAttribute("inert");
+			});
+		};
 	}, [open]);
 
 	return (

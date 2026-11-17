@@ -84,12 +84,14 @@ Every push to `main` and every PR runs five parallel checks — lint, typecheck,
 | Design implementation | 2026-11-14 | Tokens, fonts, accessibility baseline, assets from Figma, full responsive page (8 sections + footer) | ≈ 3h30 |
 | SEO, accessibility, performance | 2026-11-15 | Canonical/sitemap/robots, WCAG pass, font and image transfer | ≈ 1h |
 | Tests and docs | 2026-11-16 | Playwright suite, Storybook, SEO URL tests | ≈ 30min |
+| UI review pass | 2026-11-16/17 | Interaction polish, full-screen mobile menu, static primitives, docs video | ≈ 30min |
+| Submission docs | 2026-11-17 | README for reviewers, Lighthouse re-run, this walkthrough | ≈ 30min |
 
-**Total: ≈ 6h10** for 2026-11-14 (see the [logs](docs/logs) for the later stages).
+**Total: ≈ 7h10** for 2026-11-14 (see the [logs](docs/logs) for the later stages).
 
 ## AI tools
 
 - **Agents:** frontier coding models (GLM family, OpenAI Codex, Claude) orchestrated through OpenCode, with skills for UI review, engineering documentation and React/Next.js performance.
 - **Design data:** Figma MCP and the Figma REST API — frame measurements, token extraction and the pixel-diff font validation behind [ADR 0005](docs/adr/0005-serve-fonts-locally-from-versioned-files.md).
-- **Review:** CodeRabbit on pull requests, plus hand review of every commit.
+- **Review:** CodeRabbit is configured on pull requests; every commit also got hand review.
 - **How the results were checked:** Playwright screenshots from 320 to 1920 px, Lighthouse audits, and the local gates (`pnpm lint`, `pnpm typecheck`, `pnpm build`, `pnpm a11y`, `pnpm test`). Every claim in `docs/` was verified against the code it describes.
