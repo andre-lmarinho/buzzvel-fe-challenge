@@ -24,7 +24,9 @@ export function Header() {
 		window.addEventListener("keydown", onKey);
 		// keyboard focus stays inside the open menu: the page behind goes inert,
 		// including the skip link (its target, #main-content, would be unfocusable)
-		const page = document.querySelectorAll('main, footer, a[href="#main-content"]');
+		const page = document.querySelectorAll(
+			'main, footer, a[href="#main-content"]',
+		);
 		page.forEach((el) => {
 			el.setAttribute("inert", "");
 		});
